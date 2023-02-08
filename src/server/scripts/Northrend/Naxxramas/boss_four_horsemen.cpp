@@ -364,16 +364,9 @@ public:
 
             if ((me->GetEntry() == NPC_LADY_BLAUMEUX || me->GetEntry() == NPC_SIR_ZELIEK))
             {
-                if (Unit* target = SelectTarget(SelectTargetMethod::MinDistance, 0, 45.0f, true))
+                if (Unit* target = SelectTarget(SelectTargetMethod::MaxDistance, 0, 45.0f, true))
                 {
-                    if (target->HasAura(19753)) // Divine Intervention - Silker hack-fix
-                    {
-                        Unit::Kill(me,target);
-                    }
-                    else
-                    {
-                        me->CastSpell(target, RAID_MODE(TABLE_SPELL_PRIMARY_10[horsemanId], TABLE_SPELL_PRIMARY_25[horsemanId]), false);
-                    }
+                    me->CastSpell(target, RAID_MODE(TABLE_SPELL_PRIMARY_10[horsemanId], TABLE_SPELL_PRIMARY_25[horsemanId]), false);
                 }
             }
             else
